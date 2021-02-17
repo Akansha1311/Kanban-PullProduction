@@ -30,5 +30,12 @@ router.post("/set-limit", checkAuth, async (req, res) => {
   DBlimit.save();
   res.redirect("/");
 });
-
+router.get("/limit-default", async(req, res) => {
+  let newLimit = {
+    limit: 4,
+    id: 'tasklimitid'
+  }
+  let limit = await TaskLimit.create(newLimit);
+  res.redirect('/')
+})
 module.exports = router;
